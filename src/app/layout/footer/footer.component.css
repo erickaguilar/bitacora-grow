@@ -1,0 +1,13 @@
+/* estilos para el footer */
+footer {
+  background-color: #ddd;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer div {
+  width: 100%;
+}
+

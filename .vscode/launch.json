@@ -3,18 +3,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
-      "type": "pwa-chrome",
+      "name": "Listen for XDebug",
+      "type": "php",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
-    },
-    {
-      "name": "ng test",
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "port": 9000,
+      "log": true,
+      "pathMappings": {
+          "/var/www/html": "${workspaceFolder}/media"
+      },
+      "xdebugSettings": {
+          "show_hidden": 1,
+          "max_data": 65535,
+          "max_children": 100,
+          "max_depth": 5
+      }
     }
   ]
+
 }

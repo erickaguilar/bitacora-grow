@@ -1,0 +1,12 @@
+
+<!-- Header -->
+<app-header *ngIf="updateRoutes.hideNavigation"></app-header>
+<!-- Header end -->
+
+<!-- Page -->
+<router-outlet></router-outlet>
+<!-- Page end -->
+
+<!-- Footer -->
+<app-footer *ngIf="updateRoutes.hideNavigation"></app-footer>
+<!-- Footer end -->
