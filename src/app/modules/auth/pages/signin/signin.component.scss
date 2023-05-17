@@ -1,15 +1,13 @@
-
 #content-login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #f1f1f1;
-  background-image: url('../../../../../assets/img/37a9ba258524.jpg');
+  background-image: url("./../../../../../assets/img/37a9ba258524.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 .wrapper {
@@ -18,7 +16,7 @@
   max-width: 400px;
   height: 500px;
   margin: 0 auto;
-  background-color: rgba(255,255,255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;

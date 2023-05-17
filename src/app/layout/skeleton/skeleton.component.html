@@ -1,11 +1,34 @@
 
 <!-- Header -->
-<app-header *ngIf="updateRoutes.hideNavigation"></app-header>
+<app-header *ngIf="updateRoutes.hideNavigation" (menuToggled)="drawer.toggle()"></app-header>
 <!-- Header end -->
 
-<!-- Page -->
-<router-outlet></router-outlet>
-<!-- Page end -->
+
+<mat-drawer-container class="container-drawer" autosize>
+  <mat-drawer #drawer class="sidenav" mode="over">
+    <mat-nav-list>
+      <div mat-list-item class="list-item">
+        <button mat-button (click)="routes('/home')">
+          <span>Home</span>
+        </button>
+      </div>
+      <div mat-list-item class="list-item">
+        <button mat-button (click)="drawer.toggle(); logout()">
+          <span>Salir</span>
+          &nbsp;
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+   <!-- Page -->
+    <router-outlet></router-outlet>
+    <!-- Page end -->
+  </div>
+</mat-drawer-container>
+
 
 <!-- Footer -->
 <app-footer *ngIf="updateRoutes.hideNavigation"></app-footer>

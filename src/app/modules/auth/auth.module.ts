@@ -5,10 +5,11 @@ import { SharedModule } from '@shared/shared.module';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@shared/material/material.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
 	declarations: [SigninComponent],
-	imports: [SharedModule, AuthRoutingModule, ReactiveFormsModule, MaterialModule],
+	imports: [SharedModule, AuthRoutingModule, ReactiveFormsModule, MaterialModule,  NgxSpinnerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AuthModule {}

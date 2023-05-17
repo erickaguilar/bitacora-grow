@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '@shared/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppComponent } from './app.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
@@ -28,12 +27,11 @@ import { HeaderComponent } from './layout/header/header.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule,
     SharedModule,
     ReactiveFormsModule,
     CoreModule,
     HttpClientModule,
-    NgxSpinnerModule
+    MaterialModule
   ],
   providers: [
     {

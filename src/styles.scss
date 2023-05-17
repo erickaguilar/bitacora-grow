@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: #54880E;
+$accent: #4F0D62;
+$warn: #95240F;
+
+$success: #4CAF50;
+$danger: #F44336;
+$warning: #FFEB3B;
+$info: #2196F3;
+
+$black: #212121;
+$white: #FAFAFA;
+
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/font/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url("./assets/font/Montserrat-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat-Light";
+  src: url("./assets/font/Montserrat-Light.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("./assets/font/Montserrat-Medium.ttf");
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Montserrat, Helvetica, sans-serif;
+}
+
+.mat-mdc-snack-bar-container.successSnackBar {
+  --mat-mdc-snack-bar-button-color: $success;
+  --mdc-snackbar-container-color: #212121;
+  --mdc-snackbar-supporting-text-color: $success;
+}
+
+.mat-mdc-snack-bar-container.dangerSnackBar {
+  --mat-mdc-snack-bar-button-color: #F44336;
+  --mdc-snackbar-container-color: #212121;
+  --mdc-snackbar-supporting-text-color: #F44336;
+}
+
+.mat-mdc-snack-bar-container.warningSnackBar {
+  --mat-mdc-snack-bar-button-color: $warning;
+  --mdc-snackbar-container-color: #212121;
+  --mdc-snackbar-supporting-text-color: $warning;
+}
+
+.mat-mdc-snack-bar-container.infoSnackBar {
+  --mat-mdc-snack-bar-button-color: $info;
+  --mdc-snackbar-container-color: #212121;
+  --mdc-snackbar-supporting-text-color: $info;
+}

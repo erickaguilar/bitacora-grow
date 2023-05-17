@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
 	selector: 'app-signin',
 	templateUrl: './signin.component.html',
-	styleUrls: ['./signin.component.css'],
+	styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent {
 
@@ -50,14 +50,15 @@ export class SigninComponent {
           localStorage.setItem('token', res.id);
           localStorage.setItem('name', res.nombre);
           localStorage.setItem('email', res.email);
-          this.router.navigate(['']);
+          this.router.navigate(['/home']);
         } else {
-          this.openSnackBar('Credenciales incorrectas.', 'Cerrar', 'dangerSnackBar');
+          this.openSnackBar('Credenciales incorrectas.', 'Cerrar', 'warningSnackBar');
         }
       },
       error: (err) => {
-        console.error(err);
-        this.openSnackBar(err, 'Cerrar','dangerSnackBar');
+        console.error(err.message);
+        this.openSnackBar(err.statusText, 'Cerrar','dangerSnackBar');
+        this.spinner.hide();
       },
       complete: () => {
         this.spinner.hide();
@@ -78,12 +79,13 @@ export class SigninComponent {
           this.signupForm.reset();
           this.showLogin();
         } else {
-          this.openSnackBar('Datos incorrectos. Intente nuevamente por favor.', 'Cerrar', 'dangerSnackBar');
+          this.openSnackBar('Datos incorrectos. Intente nuevamente por favor.', 'Cerrar', 'warningSnackBar');
         }
       },
       error:(err) => {
-        console.error(err);
-        this.openSnackBar(err, 'Cerrar','dangerSnackBar');
+        console.error(err.message);
+        this.openSnackBar(err.statusText, 'Cerrar','dangerSnackBar');
+        this.spinner.hide();
       },
       complete: () => {
         this.spinner.hide();
@@ -104,7 +106,7 @@ export class SigninComponent {
 
   private openSnackBar(message: string, action: string, type: string) {
     this.snackBar.open(message, action, {
-      duration: 5000,
+      duration: 50000,
       verticalPosition: 'top',
       panelClass: type
     });

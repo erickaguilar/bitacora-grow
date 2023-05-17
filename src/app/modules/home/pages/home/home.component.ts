@@ -1,37 +1,115 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+interface Plant {
+  name: string;
+  type: string;
+  datePlanted: Date;
+  expectedHarvestDate: Date;
+  careHistory: string[];
+  image: string;
+}
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
 
-  plantForm!: FormGroup;
-  selectedFile!: File;
-
-  constructor(private fb: FormBuilder) {
-    this.createForm();
-  }
-
-  createForm() {
-    this.plantForm = this.fb.group({
-      name: ['', Validators.required],
-      type: ['', Validators.required],
-      datePlanted: ['', Validators.required]
-    });
-  }
-
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-
-  onSubmit() {
-    console.log(this.plantForm.value);
-  }
+  plants  = [
+    {
+      id: 1,
+      name: 'Planta 1',
+      type: 'Indica',
+      datePlanted: '2022-03-01',
+      dateHarvested: '2022-07-01',
+      image: '../../../../../assets/img/9a1ebc9f1ff3.jpg',
+      history: [
+        { date: '2022-03-07', note: 'Semilla plantada' },
+        { date: '2022-03-14', note: 'Planta brotando' },
+        { date: '2022-03-21', note: 'Planta creciendo' }
+      ]
+    },
+    {
+      id: 2,
+      name: 'Planta 2',
+      type: 'Sativa',
+      datePlanted: '2022-04-01',
+      dateHarvested: '2022-08-01',
+      image: '../../../../../assets/img/37a9ba258524.jpg',
+      history: [
+        { date: '2022-04-07', note: 'Semilla plantada' },
+        { date: '2022-04-14', note: 'Planta brotando' },
+        { date: '2022-04-21', note: 'Planta creciendo' }
+      ]
+    },
+    {
+      id: 3,
+      name: 'Planta 3',
+      type: 'Híbrida',
+      datePlanted: '2022-05-01',
+      dateHarvested: '2022-09-01',
+      image: '../../../../../assets/img/a3fb4aabccff.jpg',
+      history: [
+        { date: '2022-05-07', note: 'Semilla plantada' },
+        { date: '2022-05-14', note: 'Planta brotando' },
+        { date: '2022-05-21', note: 'Planta creciendo' }
+      ]
+    },
+    {
+      id: 4,
+      name: 'Planta 4',
+      type: 'Indica',
+      datePlanted: '2022-03-01',
+      dateHarvested: '2022-07-01',
+      image: '../../../../../assets/img/b413-9a1ebc9f1ff3.jpg',
+      history: [
+        { date: '2022-03-07', note: 'Semilla plantada' },
+        { date: '2022-03-14', note: 'Planta brotando' },
+        { date: '2022-03-21', note: 'Planta creciendo' }
+      ]
+    },
+    {
+      id: 5,
+      name: 'Planta 5',
+      type: 'Sativa',
+      datePlanted: '2022-04-01',
+      dateHarvested: '2022-08-01',
+      image: '../../../../../assets/img/b413-9a1ebc9f1ff3.jpg',
+      history: [
+        { date: '2022-04-07', note: 'Semilla plantada' },
+        { date: '2022-04-14', note: 'Planta brotando' },
+        { date: '2022-04-21', note: 'Planta creciendo' }
+      ]
+    },
+    {
+      id: 6,
+      name: 'Planta 6',
+      type: 'Híbrida',
+      datePlanted: '2022-05-01',
+      dateHarvested: '2022-09-01',
+      image: '../../../../../assets/img/37a9ba258524.jpg',
+      history: [
+        { date: '2022-05-07', note: 'Semilla plantada' },
+        { date: '2022-05-14', note: 'Planta brotando' },
+        { date: '2022-05-21', note: 'Planta creciendo' }
+      ]
+    },
+    {
+      id: 7,
+      name: 'Planta 7',
+      type: 'Híbrida',
+      datePlanted: '2022-05-01',
+      dateHarvested: '2022-09-01',
+      image: '../../../../../assets/img/9a1ebc9f1ff3.jpg',
+      history: [
+        { date: '2022-05-07', note: 'Semilla plantada' },
+        { date: '2022-05-14', note: 'Planta brotando' },
+        { date: '2022-05-21', note: 'Planta creciendo' }
+      ]
+    }
+  ];
 
 
 }

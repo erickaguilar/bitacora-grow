@@ -14,7 +14,7 @@ const routes: Routes = [
    component: SkeletonComponent,
    children: [
     {
-     path: INTERNAL_PATHS.ASESORI_DEFAULT,
+     path: INTERNAL_PATHS.HOME_DEFAULT,
      loadChildren: () => import('@modules/home/home.module').then((m): typeof HomeModule => m.HomeModule),
      canActivate: [AuthGuard]
     },
@@ -22,10 +22,10 @@ const routes: Routes = [
       path: INTERNAL_PATHS.AUTH_DEFAULT,
       loadChildren: () => import('@modules/auth/auth.module').then((m): typeof AuthModule => m.AuthModule),
     },
-    { path: '**', redirectTo: EMPTY_STRING, pathMatch: 'full' },
+    { path: '**', redirectTo: 'auth', pathMatch: 'full' },
    ],
   },
-  { path: '**', redirectTo: EMPTY_STRING, pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth', pathMatch: 'full' },
  ];
 
 @NgModule({

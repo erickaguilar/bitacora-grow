@@ -1,1 +1,33 @@
 <p>about works!</p>
+
+
+
+<form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Nombre de la planta</mat-label>
+    <input matInput type="text" formControlName="name" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tipo de planta</mat-label>
+    <mat-select formControlName="typePlanta" required placeholder="Tipo de planta">
+      <mat-option value="sativa">Sativa</mat-option>
+      <mat-option value="indica">Indica</mat-option>
+      <mat-option value="híbrido">Híbrido</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha de siembra</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="datePlanted" required type="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <label>
+    Imagen de la planta:
+    <input type="file" (change)="onFileSelected($event)">
+  </label>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!plantForm.valid">Guardar</button>
+</form>
