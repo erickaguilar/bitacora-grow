@@ -3,10 +3,13 @@
   <button mat-icon-button aria-label="Menu" class="menu-button" (click)="toggleMenu()">
     <i class="fas	fa-bars-staggered"></i>
   </button>
-  <span class="logo">Bitacora Grow</span>
+  <span class="logo" (click)="routes('/home')">Grow Bitacora Cannabis</span>
   <div class="menu-items">
-    <button mat-button (click)="routes('/home')">
-      <span>Home</span>
+    <button mat-button (click)="routes('/plant/register')">
+      <span>Registro</span>
+    </button>
+    <button mat-button (click)="routes('/plant')">
+      <span>Plantas</span>
     </button>
     <button mat-mini-fab color="accent" (click)="logout()">
       <i class="fas fa-sign-out-alt"></i>

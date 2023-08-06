@@ -5,8 +5,8 @@
 
 export const environment = {
   production: true,
-  API_URL: 'http://192.168.0.25/API/',
-  urlLogin: 'http://192.168.0.25/API/user.php'
+  API_URL: 'http://192.168.0.7/API/',
+  urlLogin: 'http://192.168.0.7/API/user.php'
 };
 
 

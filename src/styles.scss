@@ -10,6 +10,7 @@ $warning: #FFEB3B;
 $info: #2196F3;
 
 $black: #212121;
+$gray: #9E9E9E;
 $white: #FAFAFA;
 
 
@@ -42,26 +43,26 @@ body {
   font-family: Montserrat, Helvetica, sans-serif;
 }
 
-.mat-mdc-snack-bar-container.successSnackBar {
-  --mat-mdc-snack-bar-button-color: $success;
+.mat-mdc-snack-bar-container.success-snackbar {
+  --mat-mdc-snack-bar-button-color: #4CAF50;
   --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: $success;
+  --mdc-snackbar-supporting-text-color: #4CAF50;
 }
 
-.mat-mdc-snack-bar-container.dangerSnackBar {
+.mat-mdc-snack-bar-container.error-snackbar {
   --mat-mdc-snack-bar-button-color: #F44336;
   --mdc-snackbar-container-color: #212121;
   --mdc-snackbar-supporting-text-color: #F44336;
 }
 
-.mat-mdc-snack-bar-container.warningSnackBar {
-  --mat-mdc-snack-bar-button-color: $warning;
+.mat-mdc-snack-bar-container.warning-snackbar {
+  --mat-mdc-snack-bar-button-color: #FFEB3B;
   --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: $warning;
+  --mdc-snackbar-supporting-text-color: #FFEB3B;
 }
 
-.mat-mdc-snack-bar-container.infoSnackBar {
-  --mat-mdc-snack-bar-button-color: $info;
+.mat-mdc-snack-bar-container.info-snackbar {
+  --mat-mdc-snack-bar-button-color: #2196F3;
   --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: $info;
+  --mdc-snackbar-supporting-text-color: #2196F3;
 }

@@ -1,10 +1,12 @@
+@import '/src/styles.scss';
+
 #content-login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f1f1f1;
-  background-image: url("./../../../../../assets/img/37a9ba258524.jpg");
+  background-color: $white;
+  background-image: url("./../../../../../assets/images/37a9ba258524.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,7 +55,7 @@
 h2 {
   text-align: center;
   font-size: 30px;
-  color: #54880e;
+  color: $primary;
 }
 
 mat-form-field {
@@ -71,6 +73,8 @@ mat-form-field {
 button[type="submit"] {
   width: 100%;
   margin-top: 30px;
+  height: 55px;
+  font-size: 25px;
 }
 
 .mat-form-field {
@@ -84,7 +88,7 @@ button[type="submit"] {
 }
 
 .sign-link a {
-  color: #000;
+  color: $black;
   text-decoration: none;
   font-weight: 600;
 }

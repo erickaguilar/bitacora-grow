@@ -1,0 +1,55 @@
+@import '/src/styles.scss';
+
+#content-form {
+  padding: 20px;
+}
+
+.content-input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.content-file {
+  display: flex;
+  justify-content: flex-end;
+  max-height: 55px;
+}
+
+.subcontent,
+mat-form-field {
+  width: 100%;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+  cursor: pointer;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: $white;
+  background-color: $black;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: $primary;
+}
+

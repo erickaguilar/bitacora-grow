@@ -14,13 +14,18 @@ const routes: Routes = [
    component: SkeletonComponent,
    children: [
     {
-     path: INTERNAL_PATHS.HOME_DEFAULT,
-     loadChildren: () => import('@modules/home/home.module').then((m): typeof HomeModule => m.HomeModule),
-     canActivate: [AuthGuard]
-    },
-    {
       path: INTERNAL_PATHS.AUTH_DEFAULT,
       loadChildren: () => import('@modules/auth/auth.module').then((m): typeof AuthModule => m.AuthModule),
+    },
+    {
+      path: INTERNAL_PATHS.HOME_DEFAULT,
+      loadChildren: () => import('@modules/home/home.module').then((m): typeof HomeModule => m.HomeModule),
+      canActivate: [AuthGuard]
+    },
+    {
+      path: INTERNAL_PATHS.PLANT_DEFAULT,
+      loadChildren: () => import('@modules/plant/plant.module').then((m): typeof AuthModule => m.PlantModule),
+      canActivate: [AuthGuard]
     },
     { path: '**', redirectTo: 'auth', pathMatch: 'full' },
    ],

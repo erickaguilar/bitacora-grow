@@ -15,6 +15,10 @@ export const ROUTES_PATHS = {
 			RESULTS: `results`,
 		},
 	},
+  PLANT: {
+		DEFAULT: `plant`,
+		REGISTER: `register`,
+	},
 	SERVER: {
 		ERROR_404: `404`,
 		ERROR_400: `400`,
@@ -26,7 +30,7 @@ export const ROUTES_PATHS = {
 
 export const INTERNAL_PATHS = {
 	/**
-	 * Auth
+	 * AUTH
 	 */
 	AUTH_DEFAULT: `${ROUTES_PATHS.AUTH.DEFAULT}`,
 	AUTH_LOGIN: `${ROUTES_PATHS.AUTH.LOGIN}`,
@@ -35,6 +39,7 @@ export const INTERNAL_PATHS = {
 	 * HOME
 	 */
 	HOME_DEFAULT: `${ROUTES_PATHS.HOME.DEFAULT}`,
+
 	/**
 	 * HOME - CREDIT
 	 */
@@ -45,6 +50,11 @@ export const INTERNAL_PATHS = {
 	 */
 	HOME_INSURANCE_DEFAULT: `${ROUTES_PATHS.HOME.INSURANCE.DEFAULT}`,
 	HOME_INSURANCE_RESULTS: `${ROUTES_PATHS.HOME.INSURANCE.RESULTS}`,
+  /**
+	 * PLANT
+	 */
+	PLANT_DEFAULT: `${ROUTES_PATHS.PLANT.DEFAULT}`,
+  PLANT_REGISTER: `${ROUTES_PATHS.PLANT.REGISTER}`,
 	/**
 	 * Server
 	 */

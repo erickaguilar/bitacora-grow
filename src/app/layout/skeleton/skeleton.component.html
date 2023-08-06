@@ -13,16 +13,24 @@
         </button>
       </div>
       <div mat-list-item class="list-item">
+        <button mat-button (click)="routes('/plant/register')">
+          <span>Registro</span>
+        </button>
+      </div>
+      <div mat-list-item class="list-item">
+        <button mat-button (click)="routes('/plant')">
+          <span>Plantas</span>
+        </button>
+      </div>
+      <div mat-list-item class="list-item">
         <button mat-button (click)="drawer.toggle(); logout()">
           <span>Salir</span>
-          &nbsp;
-          <i class="fas fa-sign-out-alt"></i>
         </button>
       </div>
     </mat-nav-list>
   </mat-drawer>
 
-  <div class="sidenav-content">
+  <div id="content-page">
    <!-- Page -->
     <router-outlet></router-outlet>
     <!-- Page end -->

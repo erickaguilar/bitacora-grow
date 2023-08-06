@@ -1,3 +1,5 @@
+@import '/src/styles.scss';
+
 mat-toolbar {
   display: flex;
   justify-content: space-between;
@@ -8,6 +10,7 @@ mat-toolbar {
   font-size: 24px;
   font-weight: bold;
   margin-left: 16px;
+  cursor: default;
 }
 
 .menu-button {
@@ -25,13 +28,13 @@ mat-toolbar {
   padding: 8px 16px;
   font-size: 16px;
   text-decoration: none;
-  color: #333;
+  color: $black;
   transition: all 0.2s ease-in-out;
 }
 
 .menu-items a:hover {
-  color: #fff;
-  background-color: #333;
+  color: $white;
+  background-color: $black;
 }
 
 
@@ -49,7 +52,7 @@ mat-toolbar {
     position: absolute;
     top: 56px;
     right: 0;
-    background-color: #fff;
+    background-color: $white;
     width: 100%;
     max-height: 0;
     overflow: hidden;
@@ -63,7 +66,7 @@ mat-toolbar {
   .menu-items a {
     display: block;
     padding: 8px 16px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #CCC;
     font-size: 16px;
   }
 }

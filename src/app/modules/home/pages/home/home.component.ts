@@ -24,7 +24,7 @@ export class HomeComponent {
       type: 'Indica',
       datePlanted: '2022-03-01',
       dateHarvested: '2022-07-01',
-      image: '../../../../../assets/img/9a1ebc9f1ff3.jpg',
+      image: '../../../../../assets/images/9a1ebc9f1ff3.jpg',
       history: [
         { date: '2022-03-07', note: 'Semilla plantada' },
         { date: '2022-03-14', note: 'Planta brotando' },
@@ -37,7 +37,7 @@ export class HomeComponent {
       type: 'Sativa',
       datePlanted: '2022-04-01',
       dateHarvested: '2022-08-01',
-      image: '../../../../../assets/img/37a9ba258524.jpg',
+      image: '../../../../../assets/images/37a9ba258524.jpg',
       history: [
         { date: '2022-04-07', note: 'Semilla plantada' },
         { date: '2022-04-14', note: 'Planta brotando' },
@@ -50,7 +50,7 @@ export class HomeComponent {
       type: 'Híbrida',
       datePlanted: '2022-05-01',
       dateHarvested: '2022-09-01',
-      image: '../../../../../assets/img/a3fb4aabccff.jpg',
+      image: '../../../../../assets/images/a3fb4aabccff.jpg',
       history: [
         { date: '2022-05-07', note: 'Semilla plantada' },
         { date: '2022-05-14', note: 'Planta brotando' },
@@ -63,7 +63,7 @@ export class HomeComponent {
       type: 'Indica',
       datePlanted: '2022-03-01',
       dateHarvested: '2022-07-01',
-      image: '../../../../../assets/img/b413-9a1ebc9f1ff3.jpg',
+      image: '../../../../../assets/images/b413-9a1ebc9f1ff3.jpg',
       history: [
         { date: '2022-03-07', note: 'Semilla plantada' },
         { date: '2022-03-14', note: 'Planta brotando' },
@@ -76,7 +76,7 @@ export class HomeComponent {
       type: 'Sativa',
       datePlanted: '2022-04-01',
       dateHarvested: '2022-08-01',
-      image: '../../../../../assets/img/b413-9a1ebc9f1ff3.jpg',
+      image: '../../../../../assets/images/b413-9a1ebc9f1ff3.jpg',
       history: [
         { date: '2022-04-07', note: 'Semilla plantada' },
         { date: '2022-04-14', note: 'Planta brotando' },
@@ -89,7 +89,7 @@ export class HomeComponent {
       type: 'Híbrida',
       datePlanted: '2022-05-01',
       dateHarvested: '2022-09-01',
-      image: '../../../../../assets/img/37a9ba258524.jpg',
+      image: '../../../../../assets/images/37a9ba258524.jpg',
       history: [
         { date: '2022-05-07', note: 'Semilla plantada' },
         { date: '2022-05-14', note: 'Planta brotando' },
@@ -102,7 +102,7 @@ export class HomeComponent {
       type: 'Híbrida',
       datePlanted: '2022-05-01',
       dateHarvested: '2022-09-01',
-      image: '../../../../../assets/img/9a1ebc9f1ff3.jpg',
+      image: '../../../../../assets/images/9a1ebc9f1ff3.jpg',
       history: [
         { date: '2022-05-07', note: 'Semilla plantada' },
         { date: '2022-05-14', note: 'Planta brotando' },

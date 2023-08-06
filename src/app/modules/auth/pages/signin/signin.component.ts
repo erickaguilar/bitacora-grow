@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiUserService } from '@data/services/api-user.service'
+import { UserService } from '@data/services/user.service'
 import { NgxSpinnerService } from "ngx-spinner";
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlertService } from '@data/services/alert.service';
 
 @Component({
 	selector: 'app-signin',
@@ -18,10 +18,10 @@ export class SigninComponent {
 
   constructor(
     private fb: FormBuilder,
-    private apiUserService: ApiUserService,
+    private userService: UserService,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) {
     this.createForm();
   }
@@ -43,21 +43,21 @@ export class SigninComponent {
     this.spinner.show();
     const name = this.signinForm.value.name;
     const password = this.signinForm.value.password;
-    this.apiUserService.autorizationService(name, password).subscribe({
+    this.userService.autorizationService(name, password).subscribe({
       next: (res) => {
         if (res) {
-          this.openSnackBar('Bienvenido de nuevo '+ name +'.', 'Cerrar', 'infoSnackBar');
+          this.alertService.infoAlert('Bienvenido de nuevo '+ name +'.');
           localStorage.setItem('token', res.id);
           localStorage.setItem('name', res.nombre);
           localStorage.setItem('email', res.email);
           this.router.navigate(['/home']);
         } else {
-          this.openSnackBar('Credenciales incorrectas.', 'Cerrar', 'warningSnackBar');
+          this.alertService.warningAlert('Credenciales incorrectas.');
         }
       },
       error: (err) => {
         console.error(err.message);
-        this.openSnackBar(err.statusText, 'Cerrar','dangerSnackBar');
+        this.alertService.errorAlert(err.statusText);
         this.spinner.hide();
       },
       complete: () => {
@@ -72,19 +72,19 @@ export class SigninComponent {
     const name = this.signupForm.value.name;
     const password = this.signupForm.value.password;
     const email = this.signupForm.value.email;
-    this.apiUserService.registerService(name, password, email).subscribe({
+    this.userService.registerService(name, password, email).subscribe({
       next: (res) => {
         if (res) {
-          this.openSnackBar('La información de '+ name +' se ha enviado correctamente.', 'Cerrar','successSnackBar');
+          this.alertService.successAlert('La información de '+ name +' se ha enviado correctamente.');
           this.signupForm.reset();
           this.showLogin();
         } else {
-          this.openSnackBar('Datos incorrectos. Intente nuevamente por favor.', 'Cerrar', 'warningSnackBar');
+          this.alertService.warningAlert('Datos incorrectos. Intente nuevamente por favor.');
         }
       },
       error:(err) => {
         console.error(err.message);
-        this.openSnackBar(err.statusText, 'Cerrar','dangerSnackBar');
+        this.alertService.errorAlert(err.statusText);
         this.spinner.hide();
       },
       complete: () => {
@@ -103,15 +103,5 @@ export class SigninComponent {
     const wrapper = document.querySelector('.wrapper');
     wrapper?.classList.toggle('active');
   }
-
-  private openSnackBar(message: string, action: string, type: string) {
-    this.snackBar.open(message, action, {
-      duration: 50000,
-      verticalPosition: 'top',
-      panelClass: type
-    });
-
-  }
-
 
 }
