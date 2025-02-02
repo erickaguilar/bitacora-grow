@@ -114,15 +114,15 @@ $any-warn-color: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$bitacora-grow-primary: mat.define-palette($any-primary-color);
-$bitacora-grow-accent: mat.define-palette($any-accent-color, A200, A100, A400);
+$bitacora-grow-primary: mat.m2-define-palette($any-primary-color);
+$bitacora-grow-accent: mat.m2-define-palette($any-accent-color, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$bitacora-grow-warn: mat.define-palette($any-warn-color);
+$bitacora-grow-warn: mat.m2-define-palette($any-warn-color);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$bitacora-grow-theme: mat.define-light-theme((
+$bitacora-grow-theme: mat.m2-define-light-theme((
   color: (
     primary: $bitacora-grow-primary,
     accent: $bitacora-grow-accent,
