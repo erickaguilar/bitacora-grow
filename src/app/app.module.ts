@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
-import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '@shared/material/material.module';
@@ -30,7 +29,6 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     AppRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    CoreModule,
     HttpClientModule,
     MaterialModule
   ],

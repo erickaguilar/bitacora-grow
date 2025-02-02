@@ -4,21 +4,9 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-
 export class UpdateRoutesService {
 
-  constructor(
-    private router: Router,
-  ) {
-
-    this.update()
-
-  }
-
-  update(){
-    this.hideNavigation
-  }
-
+  constructor(private router: Router) { }
 
   get hideNavigation(): boolean {
     return ![

@@ -1,29 +1,30 @@
-
 <!-- Header -->
-<app-header *ngIf="updateRoutes.hideNavigation" (menuToggled)="drawer.toggle()"></app-header>
+<app-header
+  *ngIf="updateRoutes.hideNavigation"
+  (menuToggled)="drawer.toggle()"
+></app-header>
 <!-- Header end -->
-
 
 <mat-drawer-container class="container-drawer" autosize>
   <mat-drawer #drawer class="sidenav" mode="over">
     <mat-nav-list>
       <div mat-list-item class="list-item">
-        <button mat-button (click)="routes('/home')">
+        <button mat-button type="button" (click)="routes('/home')">
           <span>Home</span>
         </button>
       </div>
       <div mat-list-item class="list-item">
-        <button mat-button (click)="routes('/plant/register')">
+        <button mat-button type="button" (click)="routes('/plant/register')">
           <span>Registro</span>
         </button>
       </div>
       <div mat-list-item class="list-item">
-        <button mat-button (click)="routes('/plant')">
+        <button mat-button type="button" (click)="routes('/plant')">
           <span>Plantas</span>
         </button>
       </div>
       <div mat-list-item class="list-item">
-        <button mat-button (click)="drawer.toggle(); logout()">
+        <button mat-button type="button" (click)="drawer.toggle(); logout()">
           <span>Salir</span>
         </button>
       </div>
@@ -31,12 +32,11 @@
   </mat-drawer>
 
   <div id="content-page">
-   <!-- Page -->
+    <!-- Page -->
     <router-outlet></router-outlet>
     <!-- Page end -->
   </div>
 </mat-drawer-container>
-
 
 <!-- Footer -->
 <app-footer *ngIf="updateRoutes.hideNavigation"></app-footer>

@@ -6,9 +6,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { AlertService } from '@data/services/alert.service';
 
 @Component({
-	selector: 'app-signin',
-	templateUrl: './signin.component.html',
-	styleUrls: ['./signin.component.scss'],
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent {
 
@@ -43,28 +43,35 @@ export class SigninComponent {
     this.spinner.show();
     const name = this.signinForm.value.name;
     const password = this.signinForm.value.password;
-    this.userService.autorizationService(name, password).subscribe({
-      next: (res) => {
-        if (res) {
-          this.alertService.infoAlert('Bienvenido de nuevo '+ name +'.');
-          localStorage.setItem('token', res.id);
-          localStorage.setItem('name', res.nombre);
-          localStorage.setItem('email', res.email);
-          this.router.navigate(['/home']);
-        } else {
-          this.alertService.warningAlert('Credenciales incorrectas.');
-        }
-      },
-      error: (err) => {
-        console.error(err.message);
-        this.alertService.errorAlert(err.statusText);
-        this.spinner.hide();
-      },
-      complete: () => {
-        this.spinner.hide();
-        this.signinForm.reset();
-      }
-    })
+
+    this.alertService.infoAlert('Bienvenido de nuevo ' + name + '.');
+    localStorage.setItem('token', 'token');
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', 'email');
+    this.router.navigate(['/home']);
+
+    // this.userService.autorizationService(name, password).subscribe({
+    //   next: (res) => {
+    //     if (res) {
+    //       this.alertService.infoAlert('Bienvenido de nuevo '+ name +'.');
+    //       localStorage.setItem('token', res.id);
+    //       localStorage.setItem('name', res.nombre);
+    //       localStorage.setItem('email', res.email);
+    //       this.router.navigate(['/home']);
+    //     } else {
+    //       this.alertService.warningAlert('Credenciales incorrectas.');
+    //     }
+    //   },
+    //   error: (err) => {
+    //     console.error(err.message);
+    //     this.alertService.errorAlert(err.statusText);
+    //     this.spinner.hide();
+    //   },
+    //   complete: () => {
+    //     this.spinner.hide();
+    //     this.signinForm.reset();
+    //   }
+    // })
   }
 
   public onSubmitUp(): void {
@@ -75,14 +82,14 @@ export class SigninComponent {
     this.userService.registerService(name, password, email).subscribe({
       next: (res) => {
         if (res) {
-          this.alertService.successAlert('La información de '+ name +' se ha enviado correctamente.');
+          this.alertService.successAlert('La información de ' + name + ' se ha enviado correctamente.');
           this.signupForm.reset();
           this.showLogin();
         } else {
           this.alertService.warningAlert('Datos incorrectos. Intente nuevamente por favor.');
         }
       },
-      error:(err) => {
+      error: (err) => {
         console.error(err.message);
         this.alertService.errorAlert(err.statusText);
         this.spinner.hide();
