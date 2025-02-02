@@ -6,9 +6,10 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { AlertService } from '@data/services/alert.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+    selector: 'app-signin',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.scss'],
+    standalone: false
 })
 export class SigninComponent {
 

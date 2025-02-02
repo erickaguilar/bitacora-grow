@@ -3,9 +3,10 @@ import { UpdateRoutesService } from '@data/services/update-routes.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-skeleton',
-  templateUrl: './skeleton.component.html',
-  styleUrls: ['./skeleton.component.scss']
+    selector: 'app-skeleton',
+    templateUrl: './skeleton.component.html',
+    styleUrls: ['./skeleton.component.scss'],
+    standalone: false
 })
 export class SkeletonComponent {
 
