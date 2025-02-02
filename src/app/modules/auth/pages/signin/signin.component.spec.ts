@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { SigninComponent } from './signin.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('SigninComponent', () => {
   let component: SigninComponent;
@@ -13,10 +14,11 @@ describe('SigninComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule, HttpClientTestingModule ],
-      declarations: [ SigninComponent ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-    })
+    declarations: [SigninComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(SigninComponent);
