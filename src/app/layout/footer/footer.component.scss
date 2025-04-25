@@ -1,6 +1,8 @@
- footer {
-  background-color: #303030;
-  color: #fff;
+@use "/src/styles.scss" as *;
+
+footer {
+  background-color: $black;
+  color: $white;
   padding: 50px 0;
 }
 
@@ -15,6 +17,11 @@
 .footer-section {
   flex: 1;
   margin-bottom: 30px;
+}
+
+.footer-section h3,
+.footer-section i {
+  color: $primary;
 }
 
 .footer-section span {
@@ -38,7 +45,7 @@
 
 .contact li mat-icon {
   margin-right: 10px;
-  color: #fff;
+  color: $white;
 }
 
 .social ul {
@@ -57,7 +64,7 @@
 }
 
 .social li a {
-  color: #fff;
+  color: $white;
   text-decoration: none;
   display: flex;
   align-items: center;

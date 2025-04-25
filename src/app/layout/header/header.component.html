@@ -1,19 +1,21 @@
-
-<mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Menu" class="menu-button" (click)="toggleMenu()">
-    <i class="fas	fa-bars-staggered"></i>
-  </button>
-  <span class="logo" (click)="routes('/home')">Grow Bitacora Cannabis</span>
+<mat-toolbar>
+  <section class="logo">
+    <button mat-icon-button color="primary" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-button class="logo-text" (click)="routes('/home')">
+      Grow Bitacora Cannabis
+    </button>
+  </section>
   <div class="menu-items">
-    <button mat-button (click)="routes('/plant/register')">
+    <button mat-button color="primary" (click)="routes('/plant/register')">
       <span>Registro</span>
     </button>
-    <button mat-button (click)="routes('/plant')">
+    <button mat-button color="primary" (click)="routes('/plant')">
       <span>Plantas</span>
     </button>
-    <button mat-mini-fab color="accent" (click)="logout()">
-      <i class="fas fa-sign-out-alt"></i>
+    <button mat-icon-button color="primary" (click)="logout()">
+      <mat-icon>logout</mat-icon>
     </button>
   </div>
 </mat-toolbar>
-

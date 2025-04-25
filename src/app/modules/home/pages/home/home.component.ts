@@ -10,15 +10,15 @@ interface Plant {
 }
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    standalone: false
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
+  standalone: false
 })
 export class HomeComponent {
 
 
-  plants  = [
+  plants = [
     {
       id: 1,
       name: 'Planta 1',
@@ -112,5 +112,8 @@ export class HomeComponent {
     }
   ];
 
-
+  openPlantDetails(plant: any) {
+    // Aquí puedes implementar la lógica para abrir el modal con los detalles de la planta
+    console.log('Detalles de la planta:', plant);
+  }
 }
