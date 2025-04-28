@@ -7,14 +7,13 @@ import { AlertService } from '@data/services/alert.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
 @Component({
-  selector: 'app-signin',
+  selector: 'app-signup',
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss'
 })
-export class SigninComponent {
+export class SignupComponent {
 
   signinForm!: FormGroup;
   signupForm!: FormGroup;

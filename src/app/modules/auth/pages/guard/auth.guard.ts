@@ -6,9 +6,11 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard  {
+export class AuthGuard {
 
-  constructor(private router: Router) { }
+  constructor(
+    readonly router: Router
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
