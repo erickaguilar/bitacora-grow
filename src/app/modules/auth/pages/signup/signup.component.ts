@@ -42,66 +42,27 @@ export class SignupComponent {
     });
   }
 
-  public onSubmit(): void {
-    this.spinner.show();
-    const name = this.signinForm.value.name;
-    const password = this.signinForm.value.password;
+  public async onSubmitUp(): Promise<void> {
+    try {
+      this.spinner.show();
+      const name = this.signupForm.value.name;
+      const password = this.signupForm.value.password;
+      const email = this.signupForm.value.email;
 
-    this.alertService.infoAlert('Bienvenido de nuevo ' + name + '.');
-    localStorage.setItem('token', 'token');
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', 'email');
-    this.router.navigate(['/home']);
+      const user = await this.userService.registerService(name, email, password);
 
-    // this.userService.autorizationService(name, password).subscribe({
-    //   next: (res) => {
-    //     if (res) {
-    //       this.alertService.infoAlert('Bienvenido de nuevo '+ name +'.');
-    //       localStorage.setItem('token', res.id);
-    //       localStorage.setItem('name', res.nombre);
-    //       localStorage.setItem('email', res.email);
-    //       this.router.navigate(['/home']);
-    //     } else {
-    //       this.alertService.warningAlert('Credenciales incorrectas.');
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.error(err.message);
-    //     this.alertService.errorAlert(err.statusText);
-    //     this.spinner.hide();
-    //   },
-    //   complete: () => {
-    //     this.spinner.hide();
-    //     this.signinForm.reset();
-    //   }
-    // })
-  }
-
-  public onSubmitUp(): void {
-    this.spinner.show();
-    const name = this.signupForm.value.name;
-    const password = this.signupForm.value.password;
-    const email = this.signupForm.value.email;
-    this.userService.registerService(name, password, email).subscribe({
-      next: (res) => {
-        if (res) {
-          this.alertService.successAlert('La información de ' + name + ' se ha enviado correctamente.');
-          this.signupForm.reset();
-          this.showLogin();
-        } else {
-          this.alertService.warningAlert('Datos incorrectos. Intente nuevamente por favor.');
-        }
-      },
-      error: (err) => {
-        console.error(err.message);
-        this.alertService.errorAlert(err.statusText);
-        this.spinner.hide();
-      },
-      complete: () => {
-        this.spinner.hide();
-        this.signupForm.reset();
-      }
-    })
+      this.alertService.successAlert('La información de ' + name + ' se ha enviado correctamente.');
+      localStorage.setItem('token', user.uid);
+      localStorage.setItem('name', user.displayName || name);
+      localStorage.setItem('email', user.email || email);
+      this.signupForm.reset();
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Error durante el registro:', error);
+      this.alertService.errorAlert('Error al registrarse. Por favor, verifica tus datos.');
+    } finally {
+      this.spinner.hide();
+    }
   }
 
   public showRegister(): void {

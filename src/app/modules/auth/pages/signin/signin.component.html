@@ -1,7 +1,11 @@
 <div id="content-login">
   <div class="wrapper">
     <div class="form-wrapper sign-in">
-      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="form">
+      <form
+        [formGroup]="signinForm"
+        (ngSubmit)="signInWithFirebase()"
+        class="form"
+      >
         <h2>Bitacora Grow</h2>
 
         <div>
