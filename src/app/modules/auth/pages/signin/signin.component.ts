@@ -6,18 +6,19 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { AlertService } from '@data/services/alert.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signin',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule],
+  standalone: true,
+  providers: [UserService],
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent {
 
   signinForm!: FormGroup;
-  signupForm!: FormGroup;
   hide = true;
 
   constructor(
@@ -35,12 +36,6 @@ export class SigninComponent {
       name: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    this.signupForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
   }
 
   public async signInWithFirebase(): Promise<void> {
@@ -53,8 +48,8 @@ export class SigninComponent {
 
       this.alertService.infoAlert('Bienvenido de nuevo ' + user.displayName || email + '.');
       localStorage.setItem('token', user.uid);
-      localStorage.setItem('name', user.displayName || email);
-      localStorage.setItem('email', user.email || email);
+      localStorage.setItem('name', user.displayName ?? email);
+      localStorage.setItem('email', user.email ?? email);
       this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error durante el inicio de sesión:', error);

@@ -6,10 +6,12 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { AlertService } from '@data/services/alert.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -53,8 +55,8 @@ export class SignupComponent {
 
       this.alertService.successAlert('La información de ' + name + ' se ha enviado correctamente.');
       localStorage.setItem('token', user.uid);
-      localStorage.setItem('name', user.displayName || name);
-      localStorage.setItem('email', user.email || email);
+      localStorage.setItem('name', user.displayName ?? name);
+      localStorage.setItem('email', user.email ?? email);
       this.signupForm.reset();
       this.router.navigate(['/home']);
     } catch (error) {
@@ -71,8 +73,7 @@ export class SignupComponent {
   }
 
   public showLogin(): void {
-    const wrapper = document.querySelector('.wrapper');
-    wrapper?.classList.toggle('active');
+    this.router.navigate(['/auth/signin']);
   }
 
   goRegister(): void {
