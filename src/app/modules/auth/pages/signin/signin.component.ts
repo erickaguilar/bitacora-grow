@@ -7,6 +7,7 @@ import { AlertService } from '@data/services/alert.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { StoreService } from '@data/services/store.service';
 
 @Component({
   selector: 'app-signin',
@@ -26,7 +27,8 @@ export class SigninComponent {
     readonly userService: UserService,
     readonly router: Router,
     readonly spinner: NgxSpinnerService,
-    readonly alertService: AlertService
+    readonly alertService: AlertService,
+    readonly storeService: StoreService
   ) {
     this.createForm();
   }
@@ -47,9 +49,9 @@ export class SigninComponent {
       const user = await this.userService.autorizationService(email, password);
 
       this.alertService.infoAlert('Bienvenido de nuevo ' + user.displayName || email + '.');
-      localStorage.setItem('token', user.uid);
-      localStorage.setItem('name', user.displayName ?? email);
-      localStorage.setItem('email', user.email ?? email);
+      this.storeService.setToken(user.uid);
+      this.storeService.setName(user.displayName ?? email);
+      this.storeService.setEmail(user.email ?? email);
       this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error durante el inicio de sesión:', error);

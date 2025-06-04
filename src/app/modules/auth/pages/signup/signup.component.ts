@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '@data/services/user.service'
@@ -7,7 +7,7 @@ import { AlertService } from '@data/services/alert.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-
+import { StoreService } from '@data/services/store.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,28 +15,24 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
 
-  signinForm!: FormGroup;
-  signupForm!: FormGroup;
-  hide = true;
+  signupForm: FormGroup = new FormGroup({});
 
   constructor(
     readonly fb: FormBuilder,
     readonly userService: UserService,
     readonly router: Router,
     readonly spinner: NgxSpinnerService,
-    readonly alertService: AlertService
-  ) {
+    readonly alertService: AlertService,
+    readonly storeService: StoreService
+  ) { }
+
+  ngOnInit(): void {
     this.createForm();
   }
 
-  private createForm(): void {
-    this.signinForm = this.fb.group({
-      name: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
+  createForm(): void {
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -44,7 +40,7 @@ export class SignupComponent {
     });
   }
 
-  public async onSubmitUp(): Promise<void> {
+  async onSubmitUp(): Promise<void> {
     try {
       this.spinner.show();
       const name = this.signupForm.value.name;
@@ -54,9 +50,9 @@ export class SignupComponent {
       const user = await this.userService.registerService(name, email, password);
 
       this.alertService.successAlert('La información de ' + name + ' se ha enviado correctamente.');
-      localStorage.setItem('token', user.uid);
-      localStorage.setItem('name', user.displayName ?? name);
-      localStorage.setItem('email', user.email ?? email);
+      this.storeService.setToken(user.uid);
+      this.storeService.setName(user.displayName ?? name);
+      this.storeService.setEmail(user.email ?? email);
       this.signupForm.reset();
       this.router.navigate(['/home']);
     } catch (error) {
@@ -67,17 +63,7 @@ export class SignupComponent {
     }
   }
 
-  public showRegister(): void {
-    const wrapper = document.querySelector('.wrapper');
-    wrapper?.classList.toggle('active');
-  }
-
-  public showLogin(): void {
+  showLogin(): void {
     this.router.navigate(['/auth/signin']);
   }
-
-  goRegister(): void {
-    this.router.navigate(['/auth/signup']);
-  }
-
 }
