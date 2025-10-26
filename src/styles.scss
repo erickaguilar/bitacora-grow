@@ -45,24 +45,24 @@ body {
 
 .mat-mdc-snack-bar-container.success-snackbar {
   --mat-mdc-snack-bar-button-color: #4CAF50;
-  --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: #4CAF50;
+  --mat-snackbar-container-color: #212121;
+  --mat-snackbar-supporting-text-color: #4CAF50;
 }
 
 .mat-mdc-snack-bar-container.error-snackbar {
   --mat-mdc-snack-bar-button-color: #F44336;
-  --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: #F44336;
+  --mat-snackbar-container-color: #212121;
+  --mat-snackbar-supporting-text-color: #F44336;
 }
 
 .mat-mdc-snack-bar-container.warning-snackbar {
   --mat-mdc-snack-bar-button-color: #FFEB3B;
-  --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: #FFEB3B;
+  --mat-snackbar-container-color: #212121;
+  --mat-snackbar-supporting-text-color: #FFEB3B;
 }
 
 .mat-mdc-snack-bar-container.info-snackbar {
   --mat-mdc-snack-bar-button-color: #2196F3;
-  --mdc-snackbar-container-color: #212121;
-  --mdc-snackbar-supporting-text-color: #2196F3;
+  --mat-snackbar-container-color: #212121;
+  --mat-snackbar-supporting-text-color: #2196F3;
 }
