@@ -1,38 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, AuthError, updateProfile } from '@angular/fire/auth';
+import { lastValueFrom } from 'rxjs';
+
+interface AuthResponse {
+  token: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(
-    readonly http: HttpClient,
-    readonly auth: Auth
-  ) { }
+  private apiUrl = '/api/users';
 
-  async autorizationService(email: string, password: string): Promise<any> {
-    try {
-      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
-      return userCredential.user;
-    } catch (error) {
-      const authError = error as AuthError;
-      throw new Error(`Error de autenticación: ${authError.message}`);
-    }
+  constructor(private http: HttpClient) { }
+
+  autorizationService(email: string, password: string): Promise<any> {
+    const source$ = this.http.post<AuthResponse>(`${this.apiUrl}/signin`, { email, password });
+    return lastValueFrom(source$);
   }
 
-  async registerService(name: string, email: string, password: string): Promise<any> {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-      await updateProfile(userCredential.user, {
-        displayName: name
-      });
-      return userCredential.user;
-    } catch (error) {
-      const authError = error as AuthError;
-      throw new Error(`Error de registro: ${authError.message}`);
-    }
+  registerService(name: string, email: string, password: string): Promise<any> {
+    const source$ = this.http.post(`${this.apiUrl}/signup`, { name, email, password });
+    return lastValueFrom(source$);
+  }
+
+  saveToken(token: string): void {
+    localStorage.setItem('auth_token', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('auth_token');
+  }
+
+  logout(): void {
+    localStorage.removeItem('auth_token');
   }
 
 }

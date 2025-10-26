@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { StoreService } from '@data/services/store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +8,20 @@ import { map } from 'rxjs/operators';
 export class AuthGuard {
 
   constructor(
-    readonly router: Router
+    private readonly router: Router,
+    private readonly storeService: StoreService
   ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  ): boolean | UrlTree {
 
-    const cookie = localStorage.getItem('token');
-
-    if (!cookie) {
-      this.router.navigate(['/auth']);
-    } else {
+    if (this.storeService.token) {
       return true;
+    } else {
+      return this.router.createUrlTree(['/auth']);
     }
-
-    return new Observable().pipe(map(() => false));
   }
 
 }

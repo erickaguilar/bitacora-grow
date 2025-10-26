@@ -1,8 +1,10 @@
-export interface Plant {
+export interface IPlant {
+  _id?: string;       // ID from MongoDB
   name: string;
-  species: string;
-  description: string;
-  datePlanted: Date;
-  expectedHarvestDate: Date;
-  image: File;
+  species?: string;
+  birthDate?: Date;
+  imageUrl?: string;
+  user?: string;      // User ID reference
+  createdAt?: Date;   // Created by timestamps: true
+  updatedAt?: Date;   // Created by timestamps: true
 }

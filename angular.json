@@ -76,7 +76,8 @@
               "buildTarget": "bitacora-grow:build:production"
             },
             "development": {
-              "buildTarget": "bitacora-grow:build:development"
+              "buildTarget": "bitacora-grow:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

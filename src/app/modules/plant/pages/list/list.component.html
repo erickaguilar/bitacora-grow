@@ -6,12 +6,13 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title-group>
-            <img mat-card-md-image [src]="plant.imagen" alt="Foto de {{plant.nombre}}">
-            <mat-card-title>{{ plant.nombre }}</mat-card-title>
+            <img mat-card-md-image src="https://via.placeholder.com/100x100.png?text=Plant" alt="Foto de {{plant.name}}">
+            <mat-card-title>{{ plant.name }}</mat-card-title>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
-          {{plant.descripcion}}
+          <p><strong>Especie:</strong> {{ plant.species }}</p>
+          <p><strong>Siembra:</strong> {{ plant.birthDate | date:'dd/MM/yyyy' }}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-stroked-button color="primary">Detalles</button>

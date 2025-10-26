@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    RegisterComponent,
     ListComponent
   ],
   imports: [
@@ -19,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PlantRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RegisterComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

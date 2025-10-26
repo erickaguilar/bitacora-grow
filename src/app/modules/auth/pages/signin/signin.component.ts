@@ -35,24 +35,31 @@ export class SigninComponent {
 
   private createForm(): void {
     this.signinForm = this.fb.group({
-      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
-  public async signInWithFirebase(): Promise<void> {
+  public async onSubmit(): Promise<void> {
+    if (this.signinForm.invalid) {
+      return;
+    }
+
     try {
       this.spinner.show();
-      const email = this.signinForm.value.name;
-      const password = this.signinForm.value.password;
+      const { email, password } = this.signinForm.value;
 
-      const user = await this.userService.autorizationService(email, password);
+      const response = await this.userService.autorizationService(email, password);
 
-      this.alertService.infoAlert('Bienvenido de nuevo ' + user.displayName || email + '.');
-      this.storeService.setToken(user.uid);
-      this.storeService.setName(user.displayName ?? email);
-      this.storeService.setEmail(user.email ?? email);
-      this.router.navigate(['/home']);
+      if (response && response.token && response.user) {
+        this.alertService.infoAlert('Bienvenido de nuevo ' + response.user.name + '.');
+        this.storeService.setToken(response.token);
+        this.storeService.setName(response.user.name);
+        this.storeService.setEmail(response.user.email);
+        this.router.navigate(['/home']);
+      } else {
+        throw new Error('Respuesta de autenticación inválida');
+      }
     } catch (error) {
       console.error('Error durante el inicio de sesión:', error);
       this.alertService.errorAlert('Error al iniciar sesión. Por favor, verifica tus credenciales.');

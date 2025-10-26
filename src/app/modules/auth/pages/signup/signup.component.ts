@@ -47,14 +47,11 @@ export class SignupComponent implements OnInit {
       const password = this.signupForm.value.password;
       const email = this.signupForm.value.email;
 
-      const user = await this.userService.registerService(name, email, password);
+      await this.userService.registerService(name, email, password);
 
-      this.alertService.successAlert('La información de ' + name + ' se ha enviado correctamente.');
-      this.storeService.setToken(user.uid);
-      this.storeService.setName(user.displayName ?? name);
-      this.storeService.setEmail(user.email ?? email);
+      this.alertService.successAlert('¡Usuario registrado con éxito! Ahora puedes iniciar sesión.');
       this.signupForm.reset();
-      this.router.navigate(['/home']);
+      this.router.navigate(['/auth/signin']);
     } catch (error) {
       console.error('Error durante el registro:', error);
       this.alertService.errorAlert('Error al registrarse. Por favor, verifica tus datos.');

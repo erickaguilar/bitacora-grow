@@ -1,34 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { IPlant } from '../interfaces/plant.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlantService {
 
-  url: string = environment.API_URL + 'plant.php';
+  private apiUrl = '/api/plants'; // The interceptor handles the token
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  listPlantsService(): Observable<any> {
-    return this.http.get(`${this.url}?user=${localStorage.getItem('token')}`);
+  /**
+   * Gets all plants for the logged-in user.
+   */
+  listPlantsService(): Observable<IPlant[]> {
+    return this.http.get<IPlant[]>(this.apiUrl);
   }
 
-  getPlantsService(id: string): Observable<any> {
-    return this.http.get(`${this.url}?id=${id}&user=${localStorage.getItem('token')}`);
+  /**
+   * Gets a single plant by its ID.
+   * @param id The ID of the plant.
+   */
+  getPlantById(id: string): Observable<IPlant> {
+    return this.http.get<IPlant>(`${this.apiUrl}/${id}`);
   }
 
-  registerPlantsService(plant: any): Observable<any> {
-    const formData: any = new FormData();
-    formData.append("nombre", plant.name);
-    formData.append("usuario", localStorage.getItem('token'));
-    formData.append("descripcion", plant.description);
-    formData.append("imagen", plant.image);
-    return this.http.post(this.url, formData);
+  /**
+   * Registers a new plant with an optional image.
+   * @param formData The FormData object containing plant data and the image file.
+   */
+  registerPlant(formData: FormData): Observable<IPlant> {
+    // The backend will associate this plant with the logged-in user via the token.
+    // When sending FormData, HttpClient sets the Content-Type header automatically.
+    return this.http.post<IPlant>(this.apiUrl, formData);
   }
 
 }

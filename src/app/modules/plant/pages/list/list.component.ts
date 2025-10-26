@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 import { PlantService } from '@data/services/plant.service';
 import { AlertService } from '@data/services/alert.service';
+import { IPlant } from '@data/interfaces/plant.model';
 
 @Component({
     selector: 'app-list',
@@ -11,7 +12,7 @@ import { AlertService } from '@data/services/alert.service';
 })
 export class ListComponent implements OnInit {
 
-  listPlants:  any[] = [];
+  listPlants: IPlant[] = [];
 
   constructor(
     private plantService: PlantService,
@@ -26,31 +27,18 @@ export class ListComponent implements OnInit {
   getListPlant(): void {
     this.spinner.show();
     this.plantService.listPlantsService().subscribe({
-      next: (res) => {
-        // console.log(res);
-        if (res.result === 1) {
-          this.alertService.successAlert(res.message);
-          this.listPlants = res.data;
-
-          this.listPlants.forEach(element => {
-            element.imagen = 'http://192.168.0.7' + element.imagen;
-          })
-
-          this.spinner.hide();
-        } else {
-          this.spinner.hide();
-        }
-
+      next: (plants) => {
+        this.listPlants = plants;
       },
       error: (err) => {
-        console.log(err);
+        console.error('Error fetching plants:', err);
+        this.alertService.errorAlert('No se pudieron cargar las plantas.');
         this.spinner.hide();
       },
       complete: () => {
         this.spinner.hide();
       }
-    })
+    });
   }
-
 
 }

@@ -3,7 +3,7 @@
     <div class="form-wrapper sign-in">
       <form
         [formGroup]="signinForm"
-        (ngSubmit)="signInWithFirebase()"
+        (ngSubmit)="onSubmit()"
         class="form"
       >
         <h1>Bitacora Grow</h1>
@@ -13,7 +13,7 @@
           <input
             placeholder="Correo electrónico"
             matInput
-            formControlName="name"
+            formControlName="email"
             required
           />
         </mat-form-field>

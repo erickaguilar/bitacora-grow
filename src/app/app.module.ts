@@ -18,6 +18,8 @@ import { AppComponent } from './app.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './data/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,11 @@ import { HeaderComponent } from './layout/header/header.component';
     {
       provide: LOCALE_ID,
       useValue: 'es-MX'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
     },
     provideHttpClient(withInterceptorsFromDi()),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
